@@ -7,7 +7,12 @@ import store from './store'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
+import locale from 'element-ui/lib/locale/lang/en'
+import contentmenu from 'v-contextmenu'
+import 'v-contextmenu/dist/index.css'
+
+Vue.use(contentmenu)
+Vue.use(ElementUI, { locale })
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
