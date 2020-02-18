@@ -1,153 +1,248 @@
 <template>
- <div>
-   <el-tree :data="data" :props="defaultProps" ref="tree" @node-click="handleNodeClick" @node-contextmenu="handleNodeContextmenu"></el-tree>
+  <div>
+    <div>
+      <v-contextmenu ref="contextmenu">
+        <v-contextmenu-submenu title="Add">
+          <v-contextmenu-submenu title="Node">
+            <v-contextmenu-item @click="addCCNode('CCNode')">CCNode</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCNodeWidget')">CCNodeWidget</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCLayer')">CCLayer</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCLayerColor')">CCLayerColor</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCLayerGradient')">CCLayerGradient</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCTableView')">CCTableView</v-contextmenu-item>
+          </v-contextmenu-submenu>
+          <v-contextmenu-submenu title="Sprite">
+            <v-contextmenu-item @click="addCCNode('CCSprite')">CCSprite</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCScale9Sprite')">CCScale9Sprite</v-contextmenu-item>
+          </v-contextmenu-submenu>
+
+          <v-contextmenu-submenu title="Label">
+            <v-contextmenu-item @click="addCCNode('CCLabelTTF')">CCLabelTTF</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCLabelBMFont')">CCLabelBMFont</v-contextmenu-item>
+          </v-contextmenu-submenu>
+
+          <v-contextmenu-submenu title="Control">
+            <v-contextmenu-item @click="addCCNode('CCControlButton')">CCControlButton</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCControlSlider')">CCControlSlider</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCControlSwitch')">CCControlSwitch</v-contextmenu-item>
+          </v-contextmenu-submenu>
+
+          <v-contextmenu-submenu title="Misc">
+            <v-contextmenu-item @click="addCCNode('CCParticleSystem')">CCParticleSystem</v-contextmenu-item>
+            <v-contextmenu-item @click="addCCNode('CCSkeletonAnimation')">Spine</v-contextmenu-item>
+            <v-contextmenu-item @click="addCustomNode()">Custom Node</v-contextmenu-item>
+          </v-contextmenu-submenu>
+        </v-contextmenu-submenu>
+        <v-contextmenu-item @click="handleClickCut">Cut</v-contextmenu-item>
+        <v-contextmenu-item @click="handleClickCopy">Copy</v-contextmenu-item>
+        <v-contextmenu-item @click="handleClickPaste">Paste</v-contextmenu-item>
+        <v-contextmenu-item @click="handleClickDelete">Delete</v-contextmenu-item>
+      </v-contextmenu>
+    </div>
+
+    <el-tree
+      :data="data"
+      :props="defaultProps"
+      ref="tree"
+      @node-click="handleNodeClick"
+      @node-contextmenu="handleNodeContextmenu"
+      highlight-current
+      :expand-on-click-node="false"
+      node-key="id"
+      default-expand-all
+      draggable
+      @node-drop="handleDrop"
+    >
+      <span class="custom-tree-node" slot-scope="{ node }">
+        <span>{{ node.label }}</span>
+      </span>
+    </el-tree>
   </div>
 </template>
 
 <script>
-import Global from '../Global'
-let id = 10000
+/* eslint-disable */
+import Global from "../Global";
+
+let selectedNode;
+let selectedData;
+
 export default {
-  name: 'node-tree',
   props: {
     message: {
       type: String
     }
   },
   watch: {
-    message: function (message) {
-      console.log('node-tree boardcastMessage changed', message)
-      let command = message.split(':')[1]
-      if (command === 'addNode') {
-        this.addNodeByMessage(command)
-      }
-
-      if (command === 'addLayer') {
-        this.addNodeByMessage(command)
-      }
-
-      if (command === 'addLayerColor') {
-        this.addNodeByMessage(command)
-      }
-
-      if (command === 'addLayerGradient') {
-        this.addNodeByMessage(command)
+    message: function(message) {
+      // console.log('node-tree boardcastMessage changed', message)
+      let command = message.split(":")[1];
+      if (command === "refreshLeftAside") {
+        this.data = Global.nodeTreeData;
       }
     }
   },
-  data () {
+  created() {
+    const ipcRenderer = require("electron").ipcRenderer;
+    ipcRenderer.on("copy", this.handleClickCopy);
+    ipcRenderer.on("paste", this.handleClickPaste);
+    ipcRenderer.on("cut", this.handleClickCut);
+    ipcRenderer.on("delete", this.handleClickDelete);
+  },
+  destroyed() {
+    const ipcRenderer = require("electron").ipcRenderer;
+    ipcRenderer.removeListener("copy", this.handleClickCopy);
+    ipcRenderer.removeListener("paste", this.handleClickPaste);
+    ipcRenderer.removeListener("cut", this.handleClickCut);
+    ipcRenderer.removeListener("delete", this.handleClickDelete);
+  },
+  data() {
     return {
-      data: [{
-        id: 0,
-        ref: null,
-        label: 'Layer',
-        children: []
-      }],
+      data: Global.nodeTreeData,
       defaultProps: {
-        children: 'children',
-        ref: 'ref',
-        label: 'label'
+        children: "children",
+        ref: "ref",
+        label: "label"
       }
-    }
+    };
   },
   methods: {
-    handleNodeClick (data) {
-      if (this.checkRootLayer(data)) {
-        Global.selectedNode = data
-        this.$emit('handleMessage', 'updateSelectedNode')
+    handleNodeClick(data, node) {
+      Global.selectedNode = data;
+      selectedData = data;
+      selectedNode = node;
+      this.$emit("handleMessage", "selectedNodeChanged");
+    },
+    handleClickDelete() {
+      if (!selectedNode) {
+        return;
+      }
+      if (!selectedData) {
+        return;
+      }
+
+      selectedData.ref.removeFromParent();
+      // remove tree node
+      const parent = selectedNode.parent;
+      const children = parent.data.children || parent.data;
+      const index = children.findIndex(d => d.id === selectedData.id);
+      children.splice(index, 1);
+      selectedNode = null;
+      selectedData = null;
+      this.saveAsUndoStack();
+    },
+    handleClickCut() {
+      this.handleClickCopy();
+      this.handleClickDelete();
+      this.saveAsUndoStack();
+    },
+    handleClickCopy() {
+      if (!selectedNode) {
+        return;
+      }
+      if (!selectedData) {
+        return;
+      }
+      // serialize to object
+      Global.copiedNode = Global.serializeNodeTree(selectedData);
+    },
+    handleClickPaste() {
+      if (!selectedNode) {
+        return;
+      }
+      if (!selectedData) {
+        return;
+      }
+      if (!Global.copiedNode) {
+        return;
+      }
+      // deserialize from object
+      Global.deserializeNodeTree(Global.copiedNode, selectedData);
+      this.saveAsUndoStack();
+    },
+    addCCNode(className) {
+      let cc = window.cc;
+      let parser = cc.CanvasEditor.getParser(className);
+      let ref = parser.loadCCNode();
+      const child = {
+        id: Global.nodeTreeID++,
+        label: className,
+        children: [],
+        ref: ref
+      };
+      if (selectedData) {
+        selectedData.ref.addChild(ref);
+        selectedData.children.push(child);
+      } else {
+        cc.Director.getInstance()
+          .getRunningScene()
+          .addChild(ref);
+        this.$refs.tree.data.push(child);
+      }
+      this.saveAsUndoStack();
+    },
+    addCustomNode() {
+      this.$prompt("Please input your class name", "Tip", {
+        confirmButtonText: "OK",
+        cancelButtonText: "Cancel"
+      })
+        .then(({ value }) => {
+          this.addCCNode(value)
+        })
+        .catch(() => {
+        });
+    },
+    handleNodeContextmenu(event, data, node, component) {
+      Global.selectedNode = data;
+      selectedData = data;
+      selectedNode = node;
+      this.$emit("handleMessage", "selectedNodeChanged");
+      this.$refs.contextmenu.show({
+        top: event.pageY,
+        left: event.pageX
+      });
+    },
+    handleDrop(draggingNode, dropNode, dropType, ev) {
+      let ref = draggingNode.data.ref;
+      ref.removeFromParent();
+      if (dropType === "before") {
+        let parent = dropNode.data.ref.getParent();
+        parent.addChild(ref);
+        let children = parent.getChildren();
+        children.splice(children.length - 1, 1);
+        for (let i = 0; i < children.length; i++) {
+          if (children[i] === dropNode.data.ref) {
+            children.splice(i, 0, ref);
+            break;
+          }
+        }
+        this.saveAsUndoStack();
+      } else if (dropType === "inner") {
+        dropNode.data.ref.addChild(ref);
+        this.saveAsUndoStack();
+      } else if (dropType === "after") {
+        let parent = dropNode.data.ref.getParent();
+        parent.addChild(ref);
+        let children = parent.getChildren();
+        children.splice(children.length - 1, 1);
+        for (let i = 0; i < children.length; i++) {
+          if (children[i] === dropNode.data.ref) {
+            children.splice(i + 1, 0, ref);
+            break;
+          }
+        }
+        this.saveAsUndoStack();
       }
     },
-
-    checkRootLayer (data) {
-      if (!data) {
-        return false
-      }
-
-      if (data.ref) {
-        return true
-      }
-
-      let cc = window.cc
-      let scene = cc.Director.getInstance().getRunningScene()
-      if (!scene) {
-        return false
-      }
-
-      let children = scene.getChildren()
-      if (!children || !children.length) {
-        return false
-      }
-
-      data.ref = children[0]
-      children[0].setUserData(data.id)
-      return true
-    },
-
-    addNodeByMessage (message) {
-      let cc = window.cc
-      let nodeName = message.substring(3)
-      let node = this.$refs.tree.getCurrentNode()
-      if (this.checkRootLayer(node)) {
-        let ref = null
-        let parent = node.ref
-        if (message === 'addNode') {
-          ref = cc.Node.create()
-          parent.addChild(ref)
-        }
-
-        if (message === 'addLayer') {
-          ref = cc.Layer.create()
-          parent.addChild(ref)
-        }
-
-        if (message === 'addLayerColor') {
-          ref = cc.LayerColor.create(cc.c4(32, 32, 64, 255))
-          parent.addChild(ref)
-        }
-
-        if (message === 'addLayerGradient') {
-          ref = cc.LayerGradient.create(cc.c4(64, 32, 32, 255), cc.c4(32, 64, 32, 255))
-          parent.addChild(ref)
-        }
-
-        if (ref) {
-          const child = { id: id++, label: nodeName, children: [], ref: ref }
-          node.children.push(child)
-        }
-      }
-    },
-
-    handleNodeContextmenu (event, data, node, component) {
+    saveAsUndoStack() {
+      document.title = (Global.selectedCCCFile || "Untitled") + " *";
+      Global.undoStack[Global.undoIndex++] = Global.serializeNodeTree({
+        children: Global.nodeTreeData
+      });
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .tree_menu{
-    position: fixed;
-    display: block;
-    z-index: 20000;
-    background-color: #fff;
-    padding:5px 0;
-    border: 1px solid #ebeef5;
-    border-radius: 4px;
-    box-shadow:0 2px 12px 0 rgba(0,0,0,.1);
-   
-    ul{
-      margin:0;
-      padding:0;
-    }
-    ul li{
-      list-style: none;
-      margin:0;
-      padding:0 15px;
-      font-size: 14px;
-      line-height: 30px;
-      cursor: pointer;
-    }
-    ul li:hover{
-      background-color: #ebeef5
-    }
-  }
 </style>

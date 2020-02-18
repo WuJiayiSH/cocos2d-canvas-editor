@@ -41,8 +41,12 @@ var cocos2dApp = cc.Application.extend({
             return false;
         }
 
-        cc.EGLView.getInstance().resizeWithBrowserSize(true);
+        cc.EGLView.getInstance().resizeWithBrowserSize(false);
         cc.EGLView.getInstance().setDesignResolutionSize(800, 450, cc.RESOLUTION_POLICY.SHOW_ALL);
+        
+        var searchPaths = [];
+        searchPaths.push("static/runtime/");
+        cc.FileUtils.getInstance().setSearchPaths(searchPaths);
 
 	    // initialize director
 	    var director = cc.Director.getInstance();
@@ -53,7 +57,10 @@ var cocos2dApp = cc.Application.extend({
         // set FPS. the default value is 1.0/60 if you don't call this
         director.setAnimationInterval(1.0 / this.config['frameRate']);
 
-        director.runWithScene(new this.startScene());
+        //load resources
+        cc.LoaderScene.preload(g_resources, function () {
+            director.replaceScene(new this.startScene());
+        }, this);
 
         return true;
     }
