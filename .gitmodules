@@ -1,3 +1,4 @@
 [submodule "static/cocos2d-canvas"]
 	path = static/cocos2d-canvas
 	url = https://github.com/WuJiayiSH/cocos2d-canvas
+	branch = dev
