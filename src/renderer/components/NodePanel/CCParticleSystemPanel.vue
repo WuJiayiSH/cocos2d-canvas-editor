@@ -1,12 +1,12 @@
 <template>
   <el-collapse-item title="CCParticleSystem" name="CCParticleSystem">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-button @click="handlePlay">Play</el-button>
         <el-button @click="handleStop">Stop</el-button>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>File name</span>
       </el-col>
@@ -14,7 +14,7 @@
         <el-input placeholder="default.png" v-model="file" clearable></el-input>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Mode</span>
       </el-col>
@@ -32,7 +32,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Position Var</span>
       </el-col>
@@ -50,7 +50,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Emit rate</span>
       </el-col>
@@ -59,7 +59,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Duration</span>
       </el-col>
@@ -67,7 +67,7 @@
         <el-input-number size="mini" v-model="dur" :precision="3" :step="0.1"></el-input-number>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Total Particles</span>
       </el-col>
@@ -76,7 +76,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Life</span>
       </el-col>
@@ -91,7 +91,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Start Size</span>
       </el-col>
@@ -105,7 +105,7 @@
         <el-input-number size="mini" v-model="startSizeVar" :precision="3" :step="0.1"></el-input-number>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>End Size</span>
       </el-col>
@@ -120,7 +120,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Start Spin</span>
       </el-col>
@@ -134,7 +134,7 @@
         <el-input-number size="mini" v-model="startSpinVar" :precision="3" :step="0.1"></el-input-number>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>End Spin</span>
       </el-col>
@@ -149,7 +149,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Angle</span>
       </el-col>
@@ -164,7 +164,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Gravity</span>
       </el-col>
@@ -194,7 +194,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Speed</span>
       </el-col>
@@ -215,7 +215,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Tangential Accel</span>
       </el-col>
@@ -236,7 +236,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Radial Accel</span>
       </el-col>
@@ -257,7 +257,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Start Radius</span>
       </el-col>
@@ -284,7 +284,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>End Radial</span>
       </el-col>
@@ -311,7 +311,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Rotate Per Second</span>
       </el-col>
@@ -338,7 +338,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Start Color</span>
       </el-col>
@@ -354,7 +354,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>End Color</span>
       </el-col>
@@ -370,7 +370,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="additive">Blend Additive</el-checkbox>
       </el-col>
@@ -788,4 +788,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <el-collapse-item title="CCLayerGradient" name="CCLayerGradient">
-    <el-row>
+  <el-collapse-item title="CCLayerGradient" name="CCLayerGradient" size="mini">
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Start Color</span>
       </el-col>
@@ -12,7 +12,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>End Color</span>
       </el-col>
@@ -21,7 +21,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Vector</span>
       </el-col>
@@ -110,4 +110,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

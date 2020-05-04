@@ -1,12 +1,12 @@
 <template>
   <el-collapse-item title="CCControlSlider" name="CCControlSlider">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="enabled">Enabled</el-checkbox>
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>File name</span>
       </el-col>
@@ -15,7 +15,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>File name</span>
       </el-col>
@@ -24,7 +24,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>File name</span>
       </el-col>
@@ -33,7 +33,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Max</span>
       </el-col>
@@ -41,7 +41,7 @@
         <el-input-number size="mini" v-model="max" :precision="3" :step="0.1"></el-input-number>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Min</span>
       </el-col>
@@ -50,7 +50,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Value</span>
       </el-col>
@@ -159,4 +159,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

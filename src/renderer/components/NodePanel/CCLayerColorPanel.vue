@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCLayerColor" name="CCLayerColor">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Color</span>
       </el-col>
@@ -8,12 +8,12 @@
         <el-color-picker v-model="color" show-alpha></el-color-picker>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="cascadeColor">Cascade Color Enabled</el-checkbox>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="cascadeOpacity">Cascade Opacity Enabled</el-checkbox>
       </el-col>
@@ -85,4 +85,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

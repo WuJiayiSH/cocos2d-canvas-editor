@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCNode" name="CCNode">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Position</span>
       </el-col>
@@ -18,7 +18,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Content Size</span>
       </el-col>
@@ -36,7 +36,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Anchor Point</span>
       </el-col>
@@ -54,7 +54,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Scale</span>
       </el-col>
@@ -72,7 +72,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Rotation</span>
       </el-col>
@@ -81,7 +81,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Skew</span>
       </el-col>
@@ -99,7 +99,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Tag</span>
       </el-col>
@@ -108,7 +108,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="ignoreAp">Ignore Anchor Point For Position</el-checkbox>
       </el-col>
@@ -255,4 +255,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

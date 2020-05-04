@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCLayer" name="CCLayer">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="touch">Touch Enabled</el-checkbox>
       </el-col>
@@ -9,7 +9,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="accelerometer">Accelerometer Enabled</el-checkbox>
       </el-col>
@@ -95,4 +95,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

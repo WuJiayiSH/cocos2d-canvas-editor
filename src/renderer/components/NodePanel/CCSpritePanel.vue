@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCSprite" name="CCSprite">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>File name</span>
       </el-col>
@@ -9,7 +9,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Color</span>
       </el-col>
@@ -18,7 +18,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="flip.x">Flip X</el-checkbox>
       </el-col>
@@ -98,4 +98,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

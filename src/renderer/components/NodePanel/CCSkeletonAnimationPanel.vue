@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCSkeletonAnimation" name="CCSkeletonAnimation">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Json File</span>
       </el-col>
@@ -8,7 +8,7 @@
         <el-input placeholder="default.json" v-model="files[0]" clearable></el-input>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Atlas File</span>
       </el-col>
@@ -17,13 +17,13 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="24">
         <el-button @click="handleInit">Init</el-button>
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Animation</span>
       </el-col>
@@ -32,13 +32,13 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="anim.loop">Loop</el-checkbox>
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="24">
         <el-button @click="handlePlay">Play</el-button>
       </el-col>
@@ -110,4 +110,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCNodeWidget" name="CCNodeWidget">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Left</span>
       </el-col>
@@ -24,7 +24,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Right</span>
       </el-col>
@@ -48,7 +48,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Horizontal Center</span>
       </el-col>
@@ -72,7 +72,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Top</span>
       </el-col>
@@ -96,7 +96,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Bottom</span>
       </el-col>
@@ -120,7 +120,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Vertical Center</span>
       </el-col>
@@ -329,4 +329,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>
