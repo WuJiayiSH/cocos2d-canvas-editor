@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="Image" name="Image">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="3">
         <span>Width</span>
       </el-col>
@@ -17,7 +17,7 @@
 
     <el-divider content-position="left">Preview</el-divider>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="24">
         <el-image :src="src" fit="fill"></el-image>
       </el-col>
@@ -68,4 +68,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

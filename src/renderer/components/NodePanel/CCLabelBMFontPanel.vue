@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCLabelBMFont" name="CCLabelBMFont">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>File name</span>
       </el-col>
@@ -8,7 +8,7 @@
         <el-input placeholder="default.png" v-model="file" clearable></el-input>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Color</span>
       </el-col>
@@ -17,7 +17,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Text</span>
       </el-col>
@@ -94,4 +94,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

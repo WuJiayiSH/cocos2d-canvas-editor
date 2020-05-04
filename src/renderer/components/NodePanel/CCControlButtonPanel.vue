@@ -2,7 +2,7 @@
   <el-collapse-item title="CCControlButton" name="CCControlButton">
     <el-tabs type="card">
       <el-tab-pane label="Button">
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="12">
             <el-checkbox v-model="enabled">Enabled</el-checkbox>
           </el-col>
@@ -11,14 +11,14 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="24">
             <span>
               <b>Normal</b>
             </span>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Background</span>
           </el-col>
@@ -26,7 +26,7 @@
             <el-input placeholder="Background" v-model="normal.bg" clearable></el-input>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Text</span>
           </el-col>
@@ -35,7 +35,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Title Color</span>
           </el-col>
@@ -44,14 +44,14 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="24">
             <span>
               <b>Highlighted</b>
             </span>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Background</span>
           </el-col>
@@ -59,7 +59,7 @@
             <el-input placeholder="Background" v-model="highlighted.bg" clearable></el-input>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Text</span>
           </el-col>
@@ -68,7 +68,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Title Color</span>
           </el-col>
@@ -77,14 +77,14 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="24">
             <span>
               <b>Disabled</b>
             </span>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Background</span>
           </el-col>
@@ -92,7 +92,7 @@
             <el-input placeholder="Background" v-model="disabled.bg" clearable></el-input>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Text</span>
           </el-col>
@@ -101,7 +101,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Title Color</span>
           </el-col>
@@ -110,14 +110,14 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="24">
             <span>
               <b>Selected</b>
             </span>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Background</span>
           </el-col>
@@ -125,7 +125,7 @@
             <el-input placeholder="Background" v-model="selected.bg" clearable></el-input>
           </el-col>
         </el-row>
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Text</span>
           </el-col>
@@ -134,7 +134,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Title Color</span>
           </el-col>
@@ -144,7 +144,7 @@
         </el-row>
       </el-tab-pane>
       <el-tab-pane label="Label">
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Font Name</span>
           </el-col>
@@ -153,7 +153,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Font Size</span>
           </el-col>
@@ -162,7 +162,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="6">
             <span>Dimensions</span>
           </el-col>
@@ -180,7 +180,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="6">
             <span>Align</span>
           </el-col>
@@ -222,13 +222,13 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="12">
             <el-checkbox v-model="stroke.enabled">Stroke Enabled</el-checkbox>
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Stroke Size</span>
           </el-col>
@@ -243,7 +243,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Stroke Color</span>
           </el-col>
@@ -252,13 +252,13 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="12">
             <el-checkbox v-model="shadow.enabled">Shadow Enabled</el-checkbox>
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="6">
             <span>Shadow Offset</span>
           </el-col>
@@ -288,7 +288,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Shadow Opacity</span>
           </el-col>
@@ -304,7 +304,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Shadow Blur</span>
           </el-col>
@@ -320,7 +320,7 @@
         </el-row>
       </el-tab-pane>
       <el-tab-pane label="Sprite">
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="7">
             <span>Color</span>
           </el-col>
@@ -329,7 +329,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="6">
             <span>Preferred Size</span>
           </el-col>
@@ -347,7 +347,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="6">
             <span>Insets TL</span>
           </el-col>
@@ -365,7 +365,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row class="panel-item">
           <el-col :span="6">
             <span>Insets BR</span>
           </el-col>
@@ -579,4 +579,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCControlSwitch" name="CCControlSwitch">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="enabled">Enabled</el-checkbox>
       </el-col>
@@ -9,7 +9,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Sprite Mask</span>
       </el-col>
@@ -18,7 +18,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Sprite On</span>
       </el-col>
@@ -27,7 +27,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Sprite Off</span>
       </el-col>
@@ -36,7 +36,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Sprite Thumb</span>
       </el-col>
@@ -45,7 +45,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Text On</span>
       </el-col>
@@ -54,7 +54,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Text Off</span>
       </el-col>
@@ -172,4 +172,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>

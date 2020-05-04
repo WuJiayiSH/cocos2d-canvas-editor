@@ -1,6 +1,6 @@
 <template>
   <el-collapse-item title="CCLabelTTF" name="CCLabelTTF">
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Text</span>
       </el-col>
@@ -9,7 +9,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Font Name</span>
       </el-col>
@@ -18,7 +18,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Font Size</span>
       </el-col>
@@ -27,7 +27,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Dimensions</span>
       </el-col>
@@ -45,7 +45,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Align</span>
       </el-col>
@@ -87,7 +87,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Color</span>
       </el-col>
@@ -96,25 +96,25 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="bold">Bold Enabled</el-checkbox>
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="italic">Italic Enabled</el-checkbox>
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="stroke.enabled">Stroke Enabled</el-checkbox>
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Stroke Size</span>
       </el-col>
@@ -129,7 +129,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Stroke Color</span>
       </el-col>
@@ -138,13 +138,13 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="12">
         <el-checkbox v-model="shadow.enabled">Shadow Enabled</el-checkbox>
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="6">
         <span>Shadow Offset</span>
       </el-col>
@@ -174,7 +174,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Shadow Opacity</span>
       </el-col>
@@ -190,7 +190,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row class="panel-item">
       <el-col :span="7">
         <span>Shadow Blur</span>
       </el-col>
@@ -353,4 +353,5 @@ export default {
 };
 </script>
 <style scoped>
+.panel-item {margin-bottom: 2px;}
 </style>
