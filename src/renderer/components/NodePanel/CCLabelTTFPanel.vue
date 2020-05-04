@@ -98,6 +98,18 @@
 
     <el-row>
       <el-col :span="12">
+        <el-checkbox v-model="bold">Bold Enabled</el-checkbox>
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col :span="12">
+        <el-checkbox v-model="italic">Italic Enabled</el-checkbox>
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col :span="12">
         <el-checkbox v-model="stroke.enabled">Stroke Enabled</el-checkbox>
       </el-col>
     </el-row>
@@ -214,6 +226,8 @@ export default {
       size: 10,
       align: { h: 0, v: 0 },
       dim: { w: 0, h: 0 },
+      bold: false,
+      italic: false,
       stroke: { enabled: false, size: 0, color: "#000000" },
       shadow: { enabled: false, offset: { w: 0, h: 0 }, opacity: 0, blur: 0 }
     };
@@ -279,6 +293,20 @@ export default {
         // this.$emit('handleMessage', 'updateNodeController')
       },
       deep: true
+    },
+    bold: function(value) {
+      window.cc.CanvasEditor.getParser(className).onHandleProp(
+        Global.selectedNode.ref,
+        "bold",
+        value
+      );
+    },
+    italic: function(value) {
+      window.cc.CanvasEditor.getParser(className).onHandleProp(
+        Global.selectedNode.ref,
+        "italic",
+        value
+      );
     },
     stroke: {
       handler(value) {
