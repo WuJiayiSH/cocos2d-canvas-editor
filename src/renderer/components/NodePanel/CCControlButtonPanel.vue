@@ -221,6 +221,18 @@
             </el-dropdown>
           </el-col>
         </el-row>
+        
+        <el-row class="panel-item">
+          <el-col :span="12">
+            <el-checkbox v-model="bold">Bold Enabled</el-checkbox>
+          </el-col>
+        </el-row>
+
+        <el-row class="panel-item">
+          <el-col :span="12">
+            <el-checkbox v-model="italic">Italic Enabled</el-checkbox>
+          </el-col>
+        </el-row>
 
         <el-row class="panel-item">
           <el-col :span="12">
@@ -412,6 +424,8 @@ export default {
       disabled: { bg: false, text: "", color: "#000000" },
       highlighted: { bg: false, text: "", color: "#000000" },
       selected: { bg: false, text: "", color: "#000000" },
+      bold: false,
+      italic: false,
       stroke: { enabled: false, size: 0, color: "#000000" },
       shadow: { enabled: false, offset: { w: 0, h: 0 }, opacity: 0, blur: 0 },
       insets: { t: 0, l: 0, b: 0, r: 0 },
@@ -525,6 +539,20 @@ export default {
         );
       },
       deep: true
+    },
+    bold: function(value) {
+      window.cc.CanvasEditor.getParser(className).onHandleProp(
+        Global.selectedNode.ref,
+        "bold",
+        value
+      );
+    },
+    italic: function(value) {
+      window.cc.CanvasEditor.getParser(className).onHandleProp(
+        Global.selectedNode.ref,
+        "italic",
+        value
+      );
     },
     stroke: {
       handler(value) {
